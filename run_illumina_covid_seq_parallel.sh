@@ -67,7 +67,6 @@ analysis () {
     PRIMER_SCHEMES_v3="$4"
 
     echo "${sample}"
-    
     NAME=`basename "${sample}" `
     echo -e "\e[33m$NAME\033[0m"
 
@@ -81,7 +80,6 @@ analysis () {
     mosdepth --by "${PRIMER_SCHEMES_v3}" "${sample}"/"${NAME}" "${sample}"/"${NAME}".primertrim.sorted.bam
     sed -n 2p "${sample}"/"${NAME}".mosdepth.summary.txt > "${sample}"/"${NAME}".coverage_report.txt
     awk '{print $0, "'${NAME}'"}' "${sample}"/"${NAME}".coverage_report.txt > "${sample}"/"${NAME}".coverage_report_name.txt
-
 }
 
 export -f analysis

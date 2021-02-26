@@ -69,7 +69,6 @@ for sample in "${SEQ_FOLDER}"/*; do
     ivar trim -e -i "${sample}"/"${NAME}".sorted.bam -b "${PRIMER_SCHEMES_v3}" -p "${sample}"/"${NAME}".primertrim
 
     samtools sort "${sample}"/"${NAME}".primertrim.bam -o "${sample}"/"${NAME}".primertrim.sorted.bam
-    
     samtools mpileup -A -d 1000 -B -Q 0 --reference "${BWA_INDEX}" "${sample}"/"${NAME}".primertrim.sorted.bam | ivar consensus -q 13 -m 5 -p "${sample}"/"${NAME}".consensus -n N
 
     samtools index "${sample}"/"${NAME}".primertrim.sorted.bam
